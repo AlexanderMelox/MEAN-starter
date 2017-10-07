@@ -14,8 +14,8 @@
     "cors": "*",
     "jsonwebtoken": "*",
     "body-parser": "*",
-    "passport": "0.3.2",
-    "passport-jwt": "2.2.1"
+    "passport": "*",
+    "passport-jwt": "*"
   },
   "author": "Alexander Melo",
   "license": "ISC"

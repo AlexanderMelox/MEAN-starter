@@ -23,12 +23,27 @@ export class AuthService {
       .map(res => res.json());
   } 
 
+  getProfile(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-type', 'application/json');
+    return this.http.get('http://localhost:3000/users/profile', {headers:headers})
+      .map(res => res.json());
+  }
+
   storeUserData(token, user){
     localStorage.setItem('id_token', token);
     // localstorage cannot store an object so you have to stringify it.
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
+  }
+
+  // Fetch token from localStorage
+  loadToken(){
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
   }
 
   logout(){
